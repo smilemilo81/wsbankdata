@@ -20,11 +20,11 @@ public class ApplicationClient {
 		factory.getInInterceptors().add(new LoggingInInterceptor());
 		BankApplicationManager service = (BankApplicationManager) factory.create();  
 		
-		// Ä£Äâ¿Í»§¶ËÏò·şÎñ¶Ë·¢ÇëÇó£¬²âÊÔ¡¾¿¨ºÅ°ó¶¨¡¿¡£
+		// æ¨¡æ‹Ÿå®¢æˆ·ç«¯å‘æœåŠ¡ç«¯å‘è¯·æ±‚ï¼Œæµ‹è¯•ã€å¡å·ç»‘å®šã€‘ã€‚
         BankCard bc = new BankCard();  
         bc.setMemberNo("bc003");
         bc.setBankCard("6201041975");
-        bc.setName("ÀîËÄ2");
+        bc.setName("ï¿½ï¿½ï¿½ï¿½2");
         Date date = new Date();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		bc.setAddtime(sdf.format(date));
@@ -32,7 +32,7 @@ public class ApplicationClient {
         service.setBankCard(bc);
         
         
-        // Ä£Äâ¿Í»§¶ËÏò·şÎñ¶Ë·¢ÇëÇó£¬²âÊÔ¡¾ÒøĞĞ´úÊÕ¡¿¡£
+        // æ¨¡æ‹Ÿå®¢æˆ·ç«¯å‘æœåŠ¡ç«¯å‘è¯·æ±‚ï¼Œæµ‹è¯•ã€é“¶è¡Œä»£æ”¶ã€‘ã€‚
         ThirdCardCollect tcc = new ThirdCardCollect();
         tcc.setMemberNo("bn001");
         tcc.setBankCard("620104");
