@@ -2,13 +2,13 @@ package com.wsbank.Client.Bean;
 
 public class BankCardBindRepsonseBean {
 	
-	// ·µ»ØÂë
+	// è¿”å›ç 
 	private String retcode;
-	// Òì³£ÌáÊ¾
+	// å¼‚å¸¸æç¤º
 	private String retshow;
-	// »áÔ±ºÅ
+	// ä¼šå‘˜å·
 	private String memberNo;
-	// °ó¶¨¿¨ºÅ
+	// ç»‘å®šå¡å·
 	private String bankCard;
 	
 	public String getRetcode() {

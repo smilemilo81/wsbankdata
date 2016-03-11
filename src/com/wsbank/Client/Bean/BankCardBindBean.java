@@ -2,25 +2,25 @@ package com.wsbank.Client.Bean;
 
 public class BankCardBindBean {
 
-	// »áÔ±ºÅ
+	// ä¼šå‘˜å·
 	private String memberNo;
-	// ÒøĞĞ¿¨ºÅ
+	// é“¶è¡Œå¡å·
 	private String bankCard;
-	// ÒøĞĞ´úÂë
+	// é“¶è¡Œä»£ç 
 	private String bankCode;
-	// ¿¨ºÅÀàĞÍ
+	// å¡å·ç±»å‹
 	private String cardType;
-	// ĞÅÓÃ¿¨ÓĞĞ§ÆÚ
+	// ä¿¡ç”¨å¡æœ‰æ•ˆæœŸ
 	public String validDate;
-	// ĞÅÓÃ¿¨ºóÈıÎ»
+	// ä¿¡ç”¨å¡åä¸‰ä½
 	public String cvn;
-	// Ö¤¼şºÅ
+	// è¯ä»¶å·
 	private String idNo;
-	// Ö¤¼şºÅÀàĞÍ
+	// è¯ä»¶å·ç±»å‹
 	private String idType;
-	// ÓÃ»§ĞÕÃû
+	// ç”¨æˆ·å§“å
 	private String name;
-	// ÊÖ»úºÅ
+	// æ‰‹æœºå·
 	private String phoneNo;
 
 	
