@@ -1,10 +1,12 @@
 package cn.bannuo.ws.cxf.dao;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.annotation.Resource;
 
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.springframework.stereotype.Component;
+import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import org.springframework.stereotype.Repository;
 
 import cn.bannuo.ws.cxf.model.BankCard;
@@ -12,61 +14,61 @@ import cn.bannuo.ws.cxf.model.ThirdCardCollect;
 import cn.bannuo.ws.cxf.model.TransQry;
 
 @Repository("bankApplicationManagerImpl")
-public class BankApplicationManagerImpl implements BankApplicationManager {
-	
-	private SessionFactory sessionFactory;
-	
-	public SessionFactory getSessionFactory() {
-		return sessionFactory;
-	}
-
-	private Session getSession() {
-		return sessionFactory.getCurrentSession();
-	}
+public class BankApplicationManagerImpl extends HibernateDaoSupport implements BankApplicationManager {
 	
 	@Resource
-	public void setSessionFactory(SessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
+	public void setSuperSessionFactory(SessionFactory sessionFactory) {
+		this.setSessionFactory(sessionFactory);
 	}
 
 	@Override
 	public void setBankCard(BankCard bankCard) {
-		System.out.println("########## Service setBankCard(½ÓÊÕ°ó¶¨¿¨ĞÅÏ¢) ##########");
-		System.out.println("MemberNo()|»áÔ±ºÅ : " + bankCard.getMemberNo());
-		System.out.println("BankCard()|ÒøĞĞ¿¨ºÅ : " + bankCard.getBankCard());
-		System.out.println("BankCode()|ÒøĞĞ´úÂë : " + bankCard.getBankCode());
-		System.out.println("CardType()|¿¨ºÅÀàĞÍ : " + bankCard.getCardType());
-		System.out.println("IdNo()|Ö¤¼şºÅ : " + bankCard.getIdNo());
-		System.out.println("IdType()|Ö¤¼şºÅÀàĞÍ : " + bankCard.getIdType());
-		System.out.println("Name()|ÓÃ»§ĞÕÃû : " + bankCard.getName());
-		System.out.println("PhoneNo()|ÊÖ»úºÅ : " + bankCard.getPhoneNo());
+		System.out.println("########## Service setBankCard(æ¥æ”¶ç»‘å®šå¡ä¿¡æ¯) ##########");
+		System.out.println("MemberNo()|ä¼šå‘˜å· : " + bankCard.getMemberNo());
+		System.out.println("BankCard()|é“¶è¡Œå¡å· : " + bankCard.getBankCard());
+		System.out.println("BankCode()|é“¶è¡Œä»£ç  : " + bankCard.getBankCode());
+		System.out.println("CardType()|å¡å·ç±»å‹ : " + bankCard.getCardType());
+		System.out.println("IdNo()|è¯ä»¶å· : " + bankCard.getIdNo());
+		System.out.println("IdType()|è¯ä»¶å·ç±»å‹ : " + bankCard.getIdType());
+		System.out.println("Name()|ç”¨æˆ·å§“å : " + bankCard.getName());
+		System.out.println("PhoneNo()|æ‰‹æœºå· : " + bankCard.getPhoneNo());
 		
-		getSession().save(bankCard);
+		Date date = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		// è®°å½•ä¿å­˜åˆ°æ•°æ®åº“çš„æ—¶é—´
+		bankCard.setAddtime(sdf.format(date));
+		
+		getHibernateTemplate().save(bankCard);
 	}
 
 	@Override
 	public void setCardCollect(ThirdCardCollect thirdCardCollect) {
-		System.out.println("########## Service setCardCollect(½ÓÊÕÖ§¸¶¶©µ¥ĞÅÏ¢) ##########");
-		System.out.println("MemberNo()|»áÔ±ºÅ : " + thirdCardCollect.getMemberNo());
-		System.out.println("BankCard()|¿¨ºÅ : " + thirdCardCollect.getBankCard());
-		System.out.println("OutTradeNo()|¶©µ¥ºÅ : " + thirdCardCollect.getOutTradeNo());
-		System.out.println("Amt()|½»Ò×½ğ¶î : " + thirdCardCollect.getAmt());
+		System.out.println("########## Service setCardCollect(æ¥æ”¶æ”¯ä»˜è®¢å•ä¿¡æ¯) ##########");
+		System.out.println("MemberNo()|ä¼šå‘˜å· : " + thirdCardCollect.getMemberNo());
+		System.out.println("BankCard()|å¡å· : " + thirdCardCollect.getBankCard());
+		System.out.println("OutTradeNo()|è®¢å•å· : " + thirdCardCollect.getOutTradeNo());
+		System.out.println("Amt()|äº¤æ˜“é‡‘é¢ : " + thirdCardCollect.getAmt());
 		
-		getSession().save(thirdCardCollect);
+		
+		Date date = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		// è®°å½•ä¿å­˜åˆ°æ•°æ®åº“çš„æ—¶é—´
+		thirdCardCollect.setAddtime(sdf.format(date));
+		getHibernateTemplate().save(thirdCardCollect);
 	}
 
 	@Override
 	public void setTransQry(TransQry transQry) {
-		System.out.println("########## Service setTransQry(½ÓÊÕ½»Ò×Á÷Ë®ĞÅÏ¢) ##########");
-		System.out.println("MemberNo()|»áÔ±ºÅ : " + transQry.getMemberNo());
-		System.out.println("OutTradeNo()|¶©µ¥ºÅ : " + transQry.getOutTradeNo());
-		System.out.println("TradeType()|½»Ò×ÀàĞÍ : " + transQry.getTradeType());
+		System.out.println("########## Service setTransQry(æ¥æ”¶äº¤æ˜“æµæ°´ä¿¡æ¯) ##########");
+		System.out.println("MemberNo()|ä¼šå‘˜å· : " + transQry.getMemberNo());
+		System.out.println("OutTradeNo()|è®¢å•å· : " + transQry.getOutTradeNo());
+		System.out.println("TradeType()|äº¤æ˜“ç±»å‹ : " + transQry.getTradeType());
 		System.out.println("BeginTime()| : " + transQry.getBeginTime());
 		System.out.println("EndTime()| : " + transQry.getEndTime());
 		System.out.println("Pageindex()| : " + transQry.getPageindex());
 		System.out.println("Pagesize()| : " + transQry.getPagesize());
 		
-		getSession().save(transQry);
+		getHibernateTemplate().save(transQry);
 	}
 
 }
