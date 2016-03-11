@@ -10,17 +10,17 @@ import cn.bannuo.ws.cxf.model.TransQry;
 public interface BankApplicationManager {
 
 	/**
-	 * ½ÓÊÕ°ó¶¨¿¨ĞÅÏ¢
+	 * æ¥æ”¶ç»‘å®šå¡ä¿¡æ¯
 	 */
 	public void setBankCard(BankCard bankCard);
 	
 	/**
-	 * ½ÓÊÕÖ§¸¶¶©µ¥ĞÅÏ¢
+	 * æ¥æ”¶æ”¯ä»˜è®¢å•ä¿¡æ¯
 	 */
 	public void setCardCollect(ThirdCardCollect thirdCardCollect);
 	
 	/**
-	 * ½ÓÊÕ½»Ò×Á÷Ë®ĞÅÏ¢
+	 * æ¥æ”¶äº¤æ˜“æµæ°´ä¿¡æ¯
 	 */
 	public void setTransQry(TransQry transQry);
 		
