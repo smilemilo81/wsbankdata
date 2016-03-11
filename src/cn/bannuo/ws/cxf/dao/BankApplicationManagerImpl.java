@@ -54,12 +54,13 @@ public class BankApplicationManagerImpl extends HibernateDaoSupport implements B
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		// 记录保存到数据库的时间
 		thirdCardCollect.setAddtime(sdf.format(date));
+		
 		getHibernateTemplate().save(thirdCardCollect);
 	}
 
 	@Override
 	public void setTransQry(TransQry transQry) {
-		System.out.println("########## Service setTransQry(接收交易流水信息) ##########");
+		System.out.println("########## Service setTransQry(接收交易流水查询信息) ##########");
 		System.out.println("MemberNo()|会员号 : " + transQry.getMemberNo());
 		System.out.println("OutTradeNo()|订单号 : " + transQry.getOutTradeNo());
 		System.out.println("TradeType()|交易类型 : " + transQry.getTradeType());
@@ -67,6 +68,11 @@ public class BankApplicationManagerImpl extends HibernateDaoSupport implements B
 		System.out.println("EndTime()| : " + transQry.getEndTime());
 		System.out.println("Pageindex()| : " + transQry.getPageindex());
 		System.out.println("Pagesize()| : " + transQry.getPagesize());
+		
+		Date date = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		// 记录保存到数据库的时间
+		transQry.setAddtime(sdf.format(date));
 		
 		getHibernateTemplate().save(transQry);
 	}
