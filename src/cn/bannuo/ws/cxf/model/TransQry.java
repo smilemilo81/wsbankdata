@@ -8,7 +8,7 @@ import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
-@Table(name="t_transqry")
+@Table(name="fanwe_transqry")
 public class TransQry {
 
 	// 编号
