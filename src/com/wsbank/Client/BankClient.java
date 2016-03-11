@@ -23,15 +23,15 @@ public class BankClient {
 		String ServiceName = "";
 		switch (ServiceSign) {
 		case 1:
-			// ¿¨ºÅ°ó¶¨
+			// å¡å·ç»‘å®š
 			ServiceName = "bankCardBind";
 			break;
 		case 2:
-			// ËûĞĞ¿¨´úÊÕ
+			// ä»–è¡Œå¡ä»£æ”¶
 			ServiceName = "thirdCardCollect";
 			break;
 		case 3:
-			// ½»Ò×Á÷Ë®²éÑ¯
+			// äº¤æ˜“æµæ°´æŸ¥è¯¢
 			ServiceName = "transQry";
 			break;
 		default:
@@ -46,23 +46,23 @@ public class BankClient {
 		Date date = new Date();
 		SimpleDateFormat df = new SimpleDateFormat("yyyyMMddhhmmss");
 		RequestHeadBean head = new RequestHeadBean();
-		// °æ±¾ºÅ
+		// ç‰ˆæœ¬å·
 		head.setVersion("1.0");
-		// ÇşµÀÀàĞÍ(Ä¬ÈÏ005»¥ÁªÍø)
+		// æ¸ é“ç±»å‹(é»˜è®¤005äº’è”ç½‘)
 		head.setTranchannel("005");
-		// Ê±¼ä
+		// æ—¶é—´
 		head.setTrandatetime(df.format(date));
-		// ÈÏÖ¤Âë
+		// è®¤è¯ç 
 		head.setAuthcode("0112");
-		// ÇëÇóÁ÷Ë®ºÅ
+		// è¯·æ±‚æµæ°´å·
 		head.setReqsn("CP" + df.format(date));
-		// ºóÌ¨·şÎñ·½·¨
+		// åå°æœåŠ¡æ–¹æ³•
 		head.setServicename(ServiceName);
-		// Éè±¸ºÅ(·Ç¿ÕÖµ¼´¿É)
+		// è®¾å¤‡å·(éç©ºå€¼å³å¯)
 		head.setDevno("123");
-		// Ç©Ãû
+		// ç­¾å
 		head.setSignData(sign);
-		// ½ÓÈë·½ÉÌ»§ºÅ(Ä¬ÈÏ)
+		// æ¥å…¥æ–¹å•†æˆ·å·(é»˜è®¤)
 		head.setCustNo("101142000218162");
 
 		RequestBean req = new RequestBean();
@@ -85,21 +85,21 @@ public class BankClient {
 
 		BankCardBindBean body = new BankCardBindBean();
 		BankCardBindRepsonseBean reponse = new BankCardBindRepsonseBean();
-		// »áÔ±ºÅ
+		// ä¼šå‘˜å·
 		body.setMemberNo("znwowy");
-		// ÒøĞĞ¿¨ºÅ
+		// é“¶è¡Œå¡å·
 		body.setBankCard("6214968210500285982");
-		// ÒøĞĞ´úÂë(Ä¬ÈÏ447)
+		// é“¶è¡Œä»£ç (é»˜è®¤447)
 		body.setBankCode("447");
-		// ¿¨ºÅÀàĞÍ
+		// å¡å·ç±»å‹
 		body.setCardType("0");
-		// Ö¤¼şºÅ
+		// è¯ä»¶å·
 		body.setIdNo("62010219790609081x");
-		// Ö¤¼şºÅÀàĞÍ
+		// è¯ä»¶å·ç±»å‹
 		body.setIdType("01");
-		// ÓÃ»§ĞÕÃû
-		body.setName("ÕÅÈı");
-		// ÊÖ»úºÅ
+		// ç”¨æˆ·å§“å
+		body.setName("å¼ ä¸‰");
+		// æ‰‹æœºå·
 		body.setPhoneNo("13809310304");
 		
 

@@ -14,14 +14,14 @@ public class Util {
 	private static Logger log = Logger.getLogger(Util.class);
 
 	/**
-	 * Ç©Ãû¼ÓÃÜ
+	 * ç­¾ååŠ å¯†
 	 * 
 	 * @param resString
-	 *            ĞèÒª¼ÓÃÜµÄ×Ö·û´®
+	 *            éœ€è¦åŠ å¯†çš„å­—ç¬¦ä¸²
 	 * @param serverPrivateKeyFile
-	 *            ¼ÓÃÜÎÄ¼ş
+	 *            åŠ å¯†æ–‡ä»¶
 	 * @param serverEncodeKey
-	 *            ¼ÓÃÜkey
+	 *            åŠ å¯†key
 	 * @return
 	 */
 	public static String signEncode(String resString,
@@ -31,41 +31,41 @@ public class Util {
 			signData = JfyMallAuth.genDataSignNoNeedInit(resString,
 					serverPrivateKeyFile, serverEncodeKey);
 		} catch (Exception e) {
-			log.error("Ç©ÃûÊ±ºò·¢Éú´íÎó£¡£¡£¡" + e.toString(), e);
+			log.error("ç­¾åæ—¶å€™å‘ç”Ÿé”™è¯¯ï¼ï¼ï¼" + e.toString(), e);
 		}
 		return signData;
 	}
 
 	/**
-	 * Ç©ÃûÑéÃÜ
+	 * ç­¾åéªŒå¯†
 	 * 
 	 * @param signData
-	 *            //Ç©Ãû
+	 *            //ç­¾å
 	 * @param resString
-	 *            //½âÃÜÊı¾İ
+	 *            //è§£å¯†æ•°æ®
 	 * @param clientpublicKeyFile
-	 *            ½âÃÜÎÄ¼ş
-	 * @return false Ç©ÃûÓĞÎó true Ç©ÃûÕıÈ·
+	 *            è§£å¯†æ–‡ä»¶
+	 * @return false ç­¾åæœ‰è¯¯ true ç­¾åæ­£ç¡®
 	 */
 	public static boolean signDecode(String signData, String resString,
 			String clientpublicKeyFile) {
 		log.debug(clientpublicKeyFile);
 		boolean signState = false;
-		// È·ÈÏÇëÇóµÄºÏ·¨ĞÔ£¬Á÷³ÌÈçÏÂ£º
-		// 1¡¢¸ù¾İÉÌ»§±àºÅ£¬»ñµÃ¸ÃÉÌ»§ÅäÖÃµÄ ¹«Ô¿ÎÄ¼ş
-		// 2¡¢¸ù¾İË«·½Ô¼¶¨µÄ×éÖ¯Ç©ÃûÊı¾İµÄ¹æÔò£¬»ñµÃÇ©ÃûµÄÊı¾İ£¬±ÈÈçÊÇrsp.toString()
-		// 3¡¢ÓÃ¹«Ô¿ÎÄ¼şµÄ¹«Ô¿¶ÔÇ©ÃûÊı¾İ½øĞĞÑéÇ©£¬ÑéÖ¤Í¨¹ı¾ÍOK
+		// ç¡®è®¤è¯·æ±‚çš„åˆæ³•æ€§ï¼Œæµç¨‹å¦‚ä¸‹ï¼š
+		// 1ã€æ ¹æ®å•†æˆ·ç¼–å·ï¼Œè·å¾—è¯¥å•†æˆ·é…ç½®çš„ å…¬é’¥æ–‡ä»¶
+		// 2ã€æ ¹æ®åŒæ–¹çº¦å®šçš„ç»„ç»‡ç­¾åæ•°æ®çš„è§„åˆ™ï¼Œè·å¾—ç­¾åçš„æ•°æ®ï¼Œæ¯”å¦‚æ˜¯rsp.toString()
+		// 3ã€ç”¨å…¬é’¥æ–‡ä»¶çš„å…¬é’¥å¯¹ç­¾åæ•°æ®è¿›è¡ŒéªŒç­¾ï¼ŒéªŒè¯é€šè¿‡å°±OK
 
-		// ÑéÖ¤Êı×ÖÇ©Ãû ¸Ã·½·¨ÓĞÒÔÏÂ¼¸¸ö²ÎÊı £¬ Ç©ÃûµÄÊı¾İ(2×öµÄ),Ç©Ãû(signData), ÉÌ»§¹«Ô¿Â·¾¶ £¬ÉÌ»§±àºÅ
-		// (¹«Ô¿ÎÄ¼şÃüÃû¹æÔòÎªÉÌ»§±àºÅ.dat)
-		// ÉÌ»§¹«Ô¿Â·¾¶ÔÚÉÌ»§Æ½Ì¨£¬ÊÇ¸ö¹Ì¶¨µÄ¡£ÔÚ»ı·ÖÒ×Ó¦ÓÃÍø¹Ø£¬Ó¦¸Ã¸ÄÂ·¾¶ÔÚ»ù±¾Â·¾¶ÉÏ¼ÓÉÏÉÌ»§¶ÔÓÚµÄ»ú¹¹±àºÅ£¬Êµ¼ÊÂ·¾¶Ó¦¸ÃÊÇ
-		// f:/0001/uxun.datµÄ¸ñÊ½
-		// ¸ù¾İÖ¸¶¨µÄ¹«Ô¿ÎÄ¼ş£¬¼ì²éÇ©ÃûÊı¾İÊÇ·ñÕıÈ·£¬ÎŞĞèÔ¤ÏÈ³õÊ¼»¯
+		// éªŒè¯æ•°å­—ç­¾å è¯¥æ–¹æ³•æœ‰ä»¥ä¸‹å‡ ä¸ªå‚æ•° ï¼Œ ç­¾åçš„æ•°æ®(2åšçš„),ç­¾å(signData), å•†æˆ·å…¬é’¥è·¯å¾„ ï¼Œå•†æˆ·ç¼–å·
+		// (å…¬é’¥æ–‡ä»¶å‘½åè§„åˆ™ä¸ºå•†æˆ·ç¼–å·.dat)
+		// å•†æˆ·å…¬é’¥è·¯å¾„åœ¨å•†æˆ·å¹³å°ï¼Œæ˜¯ä¸ªå›ºå®šçš„ã€‚åœ¨ç§¯åˆ†æ˜“åº”ç”¨ç½‘å…³ï¼Œåº”è¯¥æ”¹è·¯å¾„åœ¨åŸºæœ¬è·¯å¾„ä¸ŠåŠ ä¸Šå•†æˆ·å¯¹äºçš„æœºæ„ç¼–å·ï¼Œå®é™…è·¯å¾„åº”è¯¥æ˜¯
+		// f:/0001/uxun.datçš„æ ¼å¼
+		// æ ¹æ®æŒ‡å®šçš„å…¬é’¥æ–‡ä»¶ï¼Œæ£€æŸ¥ç­¾åæ•°æ®æ˜¯å¦æ­£ç¡®ï¼Œæ— éœ€é¢„å…ˆåˆå§‹åŒ–
 		try {
 			signState = JfyMallAuth.verifyNoNeedInit(resString, signData,
 					clientpublicKeyFile);
 		} catch (Exception e) {
-			log.error("Ç©ÃûÈÏÖ¤´íÎó£¡£¡£¡");
+			log.error("ç­¾åè®¤è¯é”™è¯¯ï¼ï¼ï¼");
 		}
 		return signState;
 	}
