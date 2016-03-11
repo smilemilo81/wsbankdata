@@ -1,35 +1,54 @@
 package cn.bannuo.ws.cxf.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name="t_transqry")
 public class TransQry {
 
-	// »áÔ±ºÅ
+	// ç¼–å·
+	private String id;
+	
+	// ä¼šå‘˜å·
 	private String memberNo;
 	
-	// ¶©µ¥ºÅ
+	// è®¢å•å·
 	private String outTradeNo;
 	
-	// ½»Ò×ÀàĞÍ
+	// äº¤æ˜“ç±»å‹
 	private String tradeType;
 	
-	// ÆğÊ¼Ê±¼ä
+	// èµ·å§‹æ—¶é—´
 	private String beginTime;
 	
-	// ½áÊøÊ±¼ä
+	// ç»“æŸæ—¶é—´
 	private String endTime;
 	
-	// Ò³Âë
+	// é¡µç 
 	private String pageindex;
 	
-	// Ò³Ãæ´óĞ¡
+	// é¡µé¢å¤§å°
 	private String pagesize;
+	
+	// æ–°å¢æ—¶é—´
+	private String addtime;
 
+	
 	@Id
+	@GeneratedValue(generator = "system-uuid")  
+    @GenericGenerator(name = "system-uuid", strategy = "uuid")
+	public String getId() {
+		return id;
+	}
+	
+	public void setId(String id) {
+		this.id = id;
+	}
 	public String getMemberNo() {
 		return memberNo;
 	}
@@ -84,6 +103,14 @@ public class TransQry {
 
 	public void setPagesize(String pagesize) {
 		this.pagesize = pagesize;
+	}
+
+	public String getAddtime() {
+		return addtime;
+	}
+
+	public void setAddtime(String addtime) {
+		this.addtime = addtime;
 	}
 	
 }

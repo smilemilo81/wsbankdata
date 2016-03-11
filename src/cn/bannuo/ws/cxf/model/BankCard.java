@@ -1,35 +1,50 @@
 package cn.bannuo.ws.cxf.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.GenericGenerator;
+
 @Entity
-@Table(name="t_bankcard")
+@Table(name="fanwe_bankcard_bind")
 public class BankCard {
 
-	// »áÔ±ºÅ
+	// ç¼–å·
+	private String id;
+	// ä¼šå‘˜å·
 	private String memberNo;
-	// ÒøĞĞ¿¨ºÅ
+	// é“¶è¡Œå¡å·
 	private String bankCard;
-	// ÒøĞĞ´úÂë
+	// é“¶è¡Œä»£ç 
 	private String bankCode;
-	// ¿¨ºÅÀàĞÍ
+	// å¡å·ç±»å‹
 	private String cardType;
-	// ĞÅÓÃ¿¨ÓĞĞ§ÆÚ
+	// ä¿¡ç”¨å¡æœ‰æ•ˆæœŸ
 	private String validDate;
-	// ĞÅÓÃ¿¨ºóÈıÎ»
+	// ä¿¡ç”¨å¡åä¸‰ä½
 	private String cvn;
-	// Ö¤¼şºÅ
+	// è¯ä»¶å·
 	private String idNo;
-	// Ö¤¼şºÅÀàĞÍ
+	// è¯ä»¶å·ç±»å‹
 	private String idType;
-	// ÓÃ»§ĞÕÃû
+	// ç”¨æˆ·å§“å
 	private String name;
-	// ÊÖ»úºÅ
+	// æ‰‹æœºå·
 	private String phoneNo;
+	// æ–°å¢æ—¶é—´
+	private String addtime;
 	
 	@Id
+	@GeneratedValue(generator = "system-uuid")  
+    @GenericGenerator(name = "system-uuid", strategy = "uuid")
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 	public String getMemberNo() {
 		return memberNo;
 	}
@@ -89,6 +104,12 @@ public class BankCard {
 	}
 	public void setPhoneNo(String phoneNo) {
 		this.phoneNo = phoneNo;
+	}
+	public String getAddtime() {
+		return addtime;
+	}
+	public void setAddtime(String addtime) {
+		this.addtime = addtime;
 	}
 	
 }

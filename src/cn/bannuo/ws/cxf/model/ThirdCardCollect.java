@@ -1,26 +1,44 @@
 package cn.bannuo.ws.cxf.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.GenericGenerator;
+
 @Entity
-@Table(name="t_cardcollect")
+@Table(name="fanwe_thirdcard_collect")
 public class ThirdCardCollect {
 
-	// »áÔ±ºÅ
+	// ç¼–å·
+	private String id;
+	
+	// ä¼šå‘˜å·
 	private String memberNo;
 	
-	// ¿¨ºÅ
+	// å¡å·
 	private String bankCard;
 	
-	// ¶©µ¥ºÅ
+	// è®¢å•å·
 	private String outTradeNo;
 	
-	// ½»Ò×½ğ¶î
+	// äº¤æ˜“é‡‘é¢
 	private String amt;
+	
+	// æ–°å¢æ—¶é—´
+	private String addtime;
 
+	
 	@Id
+	@GeneratedValue(generator = "system-uuid")  
+    @GenericGenerator(name = "system-uuid", strategy = "uuid")
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 	public String getMemberNo() {
 		return memberNo;
 	}
@@ -51,6 +69,12 @@ public class ThirdCardCollect {
 
 	public void setAmt(String amt) {
 		this.amt = amt;
+	}
+	public String getAddtime() {
+		return addtime;
+	}
+	public void setAddtime(String addtime) {
+		this.addtime = addtime;
 	}
 	
 }
