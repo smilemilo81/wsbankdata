@@ -57,6 +57,7 @@
 				<prop key="hibernate.show_sql">true</prop>
 				<prop key="hibernate.format_sql">false</prop>
 				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<!-- <prop key="hibernate.current_session_context_class">thread</prop>  -->
 			</props>
 		</property>
 	</bean>
@@ -85,7 +86,7 @@
 		</tx:attributes>
 	</tx:advice>
 
-	<!-- 配置cxf 地址： http://localhost:8080/LZbank/ws/employeeManager 组成 ： http://localhost:8080 
+	<!-- 配置cxf 地址： http://localhost:8080/wsbankpayment/ws/employeeManager 组成 ： http://localhost:8080 
 		+ CXF_Server（ 项目名）+ ws（过滤的路径）+ /employeeManager(自定义部分) 服务类 ： 服务的实现类： 拦截器 -->
 	<!-- <jaxws:server address="/employeeManager"
 		serviceClass="cn.bannuo.ws.cxf.dao.EmployeeManager">
