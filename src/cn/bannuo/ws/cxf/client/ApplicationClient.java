@@ -24,7 +24,7 @@ public class ApplicationClient {
         BankCard bc = new BankCard();  
         bc.setMemberNo("bc003");
         bc.setBankCard("6201041975");
-        bc.setName("����2");
+        bc.setName("李四3");
         Date date = new Date();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		bc.setAddtime(sdf.format(date));
