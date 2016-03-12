@@ -1,6 +1,6 @@
-package com.wsbank.Client.Bean;
+package com.wsbank.Client.Bean.BankCardBind;
 
-public class BankCardBindRepsonseBean {
+public class BankCardBindRepsonseBodyBean {
 	
 	// 返回码
 	private String retcode;

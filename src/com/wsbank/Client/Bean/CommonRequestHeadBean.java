@@ -1,6 +1,6 @@
 package com.wsbank.Client.Bean;
 
-public class RequestHeadBean {
+public class CommonRequestHeadBean {
 	
 	private String version;
 	private String tranchannel;

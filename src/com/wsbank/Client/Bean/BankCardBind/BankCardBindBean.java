@@ -1,4 +1,4 @@
-package com.wsbank.Client.Bean;
+package com.wsbank.Client.Bean.BankCardBind;
 
 public class BankCardBindBean {
 

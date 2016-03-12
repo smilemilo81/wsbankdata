@@ -1,14 +1,14 @@
 package com.wsbank.Client.Bean;
 
-public class RequestBean {
+public class CommonRequestBean {
 	
-	private RequestHeadBean head;
+	private CommonRequestHeadBean head;
 	private Object body;
 	
-	public RequestHeadBean getHead() {
+	public CommonRequestHeadBean getHead() {
 		return head;
 	}
-	public void setHead(RequestHeadBean head) {
+	public void setHead(CommonRequestHeadBean head) {
 		this.head = head;
 	}
 	public Object getBody() {
