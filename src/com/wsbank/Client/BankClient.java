@@ -82,6 +82,7 @@ public class BankClient {
 		try {
 			ret=_client.common(ServiceSign, "uxunmsg", req,repsonse);
 			
+			//银行签名认证
 			CommonRepsonseBean c= (CommonRepsonseBean)ret;
 			if (Util.signDecode(c.getHead().getSignData(), xstream.toXML(c.getBody()),_config.getServerPublicKeyFile() ))
 			{
